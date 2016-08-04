@@ -1,17 +1,16 @@
-$(document).ready(function(){
+$(document).ready(function() {
     var data;
 
-    if(localStorage){
+    if (localStorage) {
         data = getLanguagesData();
-    }
-    else{
+    } else {
         //exception,error etc
     }
 
     console.dir(data);
 });
 
-function getLanguagesData(){
+function getLanguagesData() {
     var currentTimestamp = new Date($.now()),
         lastUpdate = Date.parse(localStorage.getItem('lastModified')),
         dateDiff = currentTimestamp - lastUpdate,
@@ -19,11 +18,10 @@ function getLanguagesData(){
         languagesData = localStorage.getItem('languagesData');
 
     //todo check storage not result !!!
-    if(isNaN(dateDiffMinutes) || dateDiffMinutes === null){
+    if (isNaN(dateDiffMinutes) || dateDiffMinutes === null) {
         languagesData = executeGithubApiCall();
-    }
-    else{
-        if(dateDiffMinutes < 60){
+    } else {
+        if (dateDiffMinutes < 60) {
 
             languagesData = JSON.parse(localStorage.getItem('languagesData'));
         }
@@ -32,18 +30,18 @@ function getLanguagesData(){
     return languagesData;
 }
 
-function executeGithubApiCall(){
+function executeGithubApiCall() {
     var ajaxFactory = new AjaxFactory(),
         languagesData = [],
         currentDateTime = new Date($.now()),
         callbackObj = {
-            success: function(data){
+            success: function(data) {
                 languagesData.push(JSON.stringify(data));
-        }
-    };
+            }
+        };
 
     ajaxFactory.getData("https://api.github.com/search/repositories?q=language:Java", callbackObj);
-    ajaxFactory.getData("https://api.github.com/search/repositories?q=language:C#", callbackObj);
+    ajaxFactory.getData("https://api.github.com/search/repositories?q=language:CSharp", callbackObj);
     ajaxFactory.getData("https://api.github.com/search/repositories?q=language:GO", callbackObj);
     ajaxFactory.getData("https://api.github.com/search/repositories?q=language:Javascript", callbackObj);
     ajaxFactory.getData("https://api.github.com/search/repositories?q=language:C", callbackObj);
@@ -54,12 +52,10 @@ function executeGithubApiCall(){
     ajaxFactory.getData("https://api.github.com/search/repositories?q=language:PHP", callbackObj);
 
     //todo improve this *** with $when
-    $(document).ajaxStop(function () {
+    $(document).ajaxStop(function() {
         localStorage.setItem('lastModified', currentDateTime);
         localStorage.setItem('languagesData', JSON.stringify(languagesData));
     });
 
     return languagesData;
 }
-
-
