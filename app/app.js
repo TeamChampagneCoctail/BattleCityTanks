@@ -50,6 +50,11 @@ function executeGithubApiCall() {
     ajaxFactory.getData("https://api.github.com/search/repositories?q=language:Ruby", callbackObj);
     ajaxFactory.getData("https://api.github.com/search/repositories?q=language:Perl", callbackObj);
     ajaxFactory.getData("https://api.github.com/search/repositories?q=language:PHP", callbackObj);
+    ajaxFactory.getData("https://api.github.com/search/repositories?q=language:CSS", callbackObj);
+    ajaxFactory.getData("https://api.github.com/search/repositories?q=language:Objective-C", callbackObj);
+    ajaxFactory.getData("https://api.github.com/search/repositories?q=language:Shell", callbackObj);
+    ajaxFactory.getData("https://api.github.com/search/repositories?q=language:Swift", callbackObj);
+    ajaxFactory.getData("https://api.github.com/search/repositories?q=language:HTML", callbackObj);
 
     //todo improve this *** with $when
     $(document).ajaxStop(function() {
