@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'ralewaybold';
+    src: url('../fonts/Raleway/raleway-bold-webfont.woff2') format('woff2'),
+    url('../fonts/Raleway/raleway-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'ralewaylight';
+    src: url('../fonts/Raleway/raleway-light-webfont.woff2') format('woff2'),
+    url('../fonts/Raleway/raleway-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'ralewaymedium';
+    src: url('../fonts/Raleway/raleway-medium-webfont.woff2') format('woff2'),
+    url('../fonts/Raleway/raleway-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'ralewayregular';
+    src: url('../fonts/Raleway/raleway-regular-webfont.woff2') format('woff2'),
+    url('../fonts/Raleway/raleway-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'ralewaysemibold';
+    src: url('../fonts/Raleway/raleway-semibold-webfont.woff2') format('woff2'),
+    url('../fonts/Raleway/raleway-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
