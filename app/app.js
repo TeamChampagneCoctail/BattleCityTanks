@@ -1,4 +1,4 @@
-$(document).ready(function(){
-    // GameEngine.Start();
+$(document).ready(function() {
+    gameEngine.initGame('canvas-container');
+    gameEngine.startGame();
 });
-

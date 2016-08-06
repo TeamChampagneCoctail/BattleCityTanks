@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Battle City Tanks</title>
     <meta charset="UTF-8">
@@ -26,6 +27,7 @@
     <link type="text/css" rel="stylesheet" href="assets/css/main.css" />
 
 </head>
+
 <body>
     <!-- LANDING PAGE -->
     <header id="home">
@@ -35,14 +37,18 @@
     </header>
 
     <!-- CANVAS CONTAINER -->
-    <div id="canvas">
-        <canvas id="game-field"></canvas>
+    <div id="canvas-container">
     </div>
 
     <!-- SCRIPTS -->
     <script type="text/javascript" src="assets/external/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="assets/external/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/external/kineticJS/kinetic.min.js"></script>
+
+    <!--GAME-->
+    <script type="text/javascript" src="app/Models/player.js"></script>
+    <script type="text/javascript" src="app/Engine/gameEngine.js"></script>
     <script type="text/javascript" src="app/app.js"></script>
 </body>
+
 </html>
