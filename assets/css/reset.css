@@ -1,6 +1,6 @@
 /* Reset */
-html { font-size:16px; /* Fix for Opera */ }
-body          {	font:75%/150% Arial, Helvetica, sans-serif; background-color:#fff; color:#333; text-align:center; }
+html { height:100%; font-size:16px; /* Fix for Opera */ }
+body          {	    height:100%;font:75%/150% Arial, Helvetica, sans-serif; background-color:#fff; color:#333; text-align:center; }
 #root-wrapper {}
 
 img           { border:0; vertical-align:top; max-width:100%; }
@@ -11,11 +11,11 @@ a:hover       { text-decoration:none; color:#333; }
 
 /* Headings */
 h1,h2,h3,
-h4,h5,h6      { margin:0 0 10px; font-weight:normal; font-family: "merriweather", Georgia, serif;}
-h1            { font-size:2.5666em;	line-height:1.25em;		/*32px, 40px*/		margin-bottom:20px; }
-h2            { font-size:1.9em;		line-height:1.25em;		/*24px, 30px*/ }
-h3            { font-size:1.5666em;	line-height:1.2em;		/*20px, 24px*/ }
-h4            { font-size:1.2333em;	line-height:1.25em;		/*16px, 20px*/ }
+h4,h5,h6      { margin:0 0 10px; font-weight:normal; }
+h1            { font-size:2.8666em;	line-height:1.25em;font-family: "ralewaysemibold", Georgia, serif;		/*32px, 40px*/		margin-bottom:20px; }
+h2            { font-size:2.2em;		line-height:1.25em;	font-family: "ralewayregular", Georgia, serif;	/*24px, 30px*/ }
+h3            { font-size:1.8666em;	line-height:1.2em;font-family: "ralewayregular", Georgia, serif;		/*20px, 24px*/ }
+h4            { font-size:1.5333em;	line-height:1.25em;		/*16px, 20px*/ }
 h5            { font-size:1.0666em;	line-height:1.1428em;	/*14px, 16px*/ }
 h6            { font-size:1em;		line-height:1.1666em;	/*12px, 14px*/ }
 

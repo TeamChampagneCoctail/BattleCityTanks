@@ -1,0 +1,175 @@
+#home{
+    height: 100%;
+    background: url(../images/LandingPage/landing_background.png) no-repeat center top fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+#home .top{
+    float: left;
+    position: relative;
+    width: 100%;
+    margin-bottom:60px;
+}
+.logo{
+    float: left;
+    position: relative;
+    width:100%;
+    margin:30px 0;
+}
+.page-title{
+    float: left;
+    position: relative;
+    width:100%;
+}
+.page-title h1{
+    font-size:48px;
+    color:#fff;
+    margin-bottom:5px;
+}
+.page-title .border-long,
+.page-title .border-small{
+    float: left;
+    position: relative;
+    width:100%;
+    margin-bottom:5px;
+}
+.page-title .border-long div{
+    width: 35%;
+    float: none;
+    margin: 0 auto;
+    height: 3px;
+    background: #dca12e;
+}
+.page-title .border-small div{
+    width: 25%;
+    float: none;
+    margin: 0 auto;
+    height: 2px;
+    background: #dca12e;
+}
+#home .page-intro{
+    float: left;
+    position: relative;
+    width:100%;
+}
+#home .page-intro .intro-section{
+    float: left;
+    position: relative;
+    width:100%;
+    background: rgba(51,51,51, 0.77);
+}
+#home .page-intro .intro-section h2{
+    color:#fff;
+    font-size: 30px;
+    margin:20px 0;
+}
+#home .page-intro .intro-section .game-intro{
+    float: left;
+    position: relative;
+    width:100%;
+    padding-bottom: 20px;
+}
+#home .page-intro .intro-section .game-intro > h3{
+    color: #dca12e;
+    font-size: 30px;
+    margin: 20px 0 50px 0;
+}
+#home .game-controls .left > p{
+    line-height: 160px;
+    font-size: 24px;
+    color: #dca12e;
+    font-family: ralewaysemibold;
+}
+#home .game-controls .left {
+    padding-top: 90px;
+}
+#home .game-controls .right {
+    padding-right: 40px;
+}
+#home .game-controls .right > p{
+    font-family: ralewaysemibold;
+    font-size: 24px;
+    color: #dca12e;
+    float: left;
+    position: relative;
+    width:100%;
+    text-align: center;
+    margin-bottom:30px;
+}
+#home .game-controls .right .delimiter{
+    float: left;
+    position: relative;
+    width: 100%;
+    margin-bottom:30px;
+}
+#home .game-controls .right .image{
+    float: left;
+    position: relative;
+    width: 100%;
+}
+#home .game-controls .right .image label{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: black;
+    line-height: 75px;
+    font-size: 20px;
+    font-family: ralewayregular;
+}
+#start-game-btn{
+    float: left;
+    position: relative;
+    width:100%;
+    margin-top:30px;
+}
+#start-game-btn button{
+    width:480px;
+    height:70px;
+    line-height:65px;
+    float: none;
+    margin:20px auto 0 auto;
+    display: block;
+    border-radius:0;
+    background:#e7a82e;
+    border:none;
+    color:#fff;
+    font-size:36px;
+    font-family: ralewaysemibold;
+    transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+    -moz-transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+    -webkit-transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+    -o-transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+}
+#start-game-btn button:hover{
+    background:#e3e3e3;
+    color:#e7a82e;
+}
+main{
+    float: left;
+    position: relative;
+    width:100%;
+    background: #fff;
+}
+main #canvas-section{
+    float: left;
+    position: relative;
+    width:100%;
+    height:860px;
+}
+
+@media (min-width: 1199px) and (max-width: 1600px) {
+
+    .logo {
+        margin: 15px 0;
+    }
+    #home .top{
+        margin-bottom:30px;
+    }
+    #home .page-intro .intro-section .game-intro > h3{
+        margin: 0px 0 20px 0;
+    }
+    #start-game-btn{
+        margin-top:0;
+    }
+}
