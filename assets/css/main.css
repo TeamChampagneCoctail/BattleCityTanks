@@ -1,8 +1,39 @@
+/* Landing Page Styles */
+
+body{
+    overflow: hidden;
+}
 #home{
+    width:100%;
     height: 100%;
+    display: table;
     background: url(../images/LandingPage/landing_background.png) no-repeat center top fixed;
     -webkit-background-size: cover;
     background-size: cover;
+    overflow: hidden;
+}
+#home.game-bound:before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: blur(3px);
+    -moz-filter: blur(3px);
+    -webkit-filter: blur(3px);
+    -o-filter: blur(3px);
+    transition: all 2s linear;
+    -moz-transition: all 2s linear;
+    -webkit-transition: all 2s linear;
+    -o-transition: all 2s linear;
+    left: 0;
+}
+#home-wrap{
+    -webkit-transform: translatez(0);
+    -moz-transform: translatez(0);
+    -ms-transform: translatez(0);
+    -o-transform: translatez(0);
+    transform: translatez(0);
 }
 #home .top{
     float: left;
@@ -161,6 +192,70 @@ main #canvas-section{
     width:100%;
     height:860px;
 }
+#team-logo{
+    display: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 185px;
+    height: 65px;
+}
+
+/* Animations */
+
+.slashed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+}
+.slashed .top-part,
+.slashed .bot-part {
+    text-align: center;
+    font: 18px/99px arial;
+    text-align: center;
+    overflow: hidden;
+    color: #fff;
+}
+.slashed .top-part:before,
+.slashed .bot-part:before {
+    content: attr(title);
+    -webkit-transform: rotate(5deg);
+    -moz-transform: rotate(5deg);
+    -o-transform: rotate(5deg);
+    -ms-transform: rotate(5deg);
+    transform: rotate(5deg);
+}
+.slashed .top-part {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    right: 0;
+    bottom: 50%;
+}
+.slashed .top-part:before {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+}
+.slashed .bot-part {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 5px;
+    bottom: 0;
+}
+.slashed .bot-part:before {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+}
+
+/* Landing Page Responsive */
 
 @media (min-width: 1199px) and (max-width: 1600px) {
     .logo {
