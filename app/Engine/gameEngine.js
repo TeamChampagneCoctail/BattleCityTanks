@@ -1,17 +1,15 @@
 var gameEngine = function() {
     'use strict';
-
-    const canvasWidth = 700,
-        canvasHeight = 500,
-        playerImage = '../../assets/images/NT/normal_down1.bmp',
-        enemyImage = '../../assets/images/NT/normal_down2.bmp';
+    
+    const playerImage = '../../assets/images/NT/normal_down1.bmp',
+          enemyImage = '../../assets/images/NT/normal_down2.bmp';
 
     var gameStage,
         backgroundLayer,
         enemiesLayer,
         playerLayer;
 
-    function initGame(container) {
+    function initGame(container, canvasWidth, canvasHeight) {
         // TODO: Check params
 
         gameStage = new Kinetic.Stage({
