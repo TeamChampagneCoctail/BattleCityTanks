@@ -4,7 +4,6 @@ var gameEngine = function() {
     const playerImage = '../../assets/images/enemy.png';
 
     var gameStage,
-        backgroundLayer,
         enemiesLayer,
         playerLayer;
 
@@ -19,16 +18,9 @@ var gameEngine = function() {
             height: canvasHeight
         });
 
-        backgroundLayer = new Kinetic.Layer();
-        playerLayer = new Kinetic.Layer();
+        Map.init(gameStage);
 
-        let background = new Kinetic.Rect({
-            x: 0,
-            y: 0,
-            width: canvasWidth,
-            height: canvasHeight,
-            fill: 'yellowgreen'
-        });
+        playerLayer = new Kinetic.Layer();
 
         sprite.createSprite({
                 x: 0,
@@ -84,9 +76,6 @@ var gameEngine = function() {
                 frameRate: 5
             }, playerLayer,
             gameStage);
-
-        backgroundLayer.add(background);
-        gameStage.add(backgroundLayer);
     }
 
     function startGame() {
