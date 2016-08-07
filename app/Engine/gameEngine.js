@@ -3,7 +3,8 @@ var gameEngine = function() {
 
     const canvasWidth = 700,
         canvasHeight = 500,
-        playerImage = '../../assets/images/NT/normal_down1.bmp';
+        playerImage = '../../assets/images/NT/normal_down1.bmp',
+        enemyImage = '../../assets/images/NT/normal_down2.bmp';
 
     var gameStage,
         backgroundLayer,
@@ -35,8 +36,17 @@ var gameEngine = function() {
             imageSrc: playerImage
         };
 
+        let enemy = {
+          x: canvasWidth - 10,
+          y: 10,
+          width: 40,
+          height: 40,
+          imageSrc: enemyImage
+        };
+
         backgroundLayer = new Kinetic.Layer();
         playerLayer = new Kinetic.Layer();
+        enemiesLayer = new Kinetic.Layer();
 
         backgroundLayer.add(background);
         addLayers();
