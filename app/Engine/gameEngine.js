@@ -1,7 +1,7 @@
 var gameEngine = function() {
     'use strict';
 
-    const playerImage = '../../assets/images/enemy.png';
+    const playerImageSrc = '../../assets/images/tank-spritesheet.png';
 
     var gameStage,
         enemiesLayer,
@@ -9,8 +9,6 @@ var gameEngine = function() {
 
     function initGame(container, canvasWidth, canvasHeight) {
         // TODO: Check params
-
-        console.log(1);
 
         gameStage = new Kinetic.Stage({
             container: container,
@@ -22,60 +20,15 @@ var gameEngine = function() {
 
         playerLayer = new Kinetic.Layer();
 
-        sprite.createSprite({
-                x: 0,
-                y: 0,
-                imageSrc: playerImage,
-                animation: 'up',
-                animations: {
-                    'up': [{
-                        x: 0,
-                        y: 0,
-                        width: 56,
-                        height: 56
-                    }, {
-                        x: 56,
-                        y: 0,
-                        width: 56,
-                        height: 56
-                    }],
-                    'right': [{
-                        x: 0,
-                        y: 56,
-                        width: 56,
-                        height: 56
-                    }, {
-                        x: 56,
-                        y: 56,
-                        width: 56,
-                        height: 56
-                    }],
-                    'down': [{
-                        x: 0,
-                        y: 112,
-                        width: 56,
-                        height: 56
-                    }, {
-                        x: 56,
-                        y: 112,
-                        width: 56,
-                        height: 56
-                    }],
-                    'left': [{
-                        x: 0,
-                        y: 168,
-                        width: 56,
-                        height: 56
-                    }, {
-                        x: 56,
-                        y: 168,
-                        width: 56,
-                        height: 56
-                    }],
-                },
-                frameRate: 5
-            }, playerLayer,
-            gameStage);
+        player.init({
+            x: 10,
+            y: 10,
+            width: 63,
+            height: 75,
+            imageSrc: playerImageSrc
+        }, playerLayer);
+
+        gameStage.add(playerLayer);
     }
 
     function startGame() {

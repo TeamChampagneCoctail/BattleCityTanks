@@ -1,12 +1,13 @@
 var sprite = function() {
     'use strict';
 
-    function createSprite(options, layer, stage) {
-        let image;
+    function createSprite(options, layer) {
+        let image,
+            sprite;
 
         image = new Image();
         image.onload = function() {
-            let sprite = new Kinetic.Sprite({
+            sprite = new Kinetic.Sprite({
                 x: options.x,
                 y: options.y,
                 image: image,
@@ -15,20 +16,7 @@ var sprite = function() {
                 frameRate: options.frameRate,
                 frameIndex: 0
             });
-
-            let rect = new Kinetic.Rect({
-                x: 0,
-                y: 10,
-                width: 100,
-                height: 100,
-                fill: 'red'
-            });
-
-
-            console.log(sprite.x);
             layer.add(sprite);
-            stage.add(layer);
-
             sprite.start();
         };
 
