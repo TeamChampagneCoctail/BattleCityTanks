@@ -5,8 +5,8 @@ $(document).ready(function(){
 function startGameEventListener(){
     $("#start-game").on('click', function(e) {
         e.preventDefault();
-        var hash = this.hash;
 
+        $("#home-container").html("<div id='game-window-wrapper'></div>");
 
         $('html, body').animate({
             scrollTop: $("#game-window-wrapper").offset().top
