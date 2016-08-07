@@ -3,7 +3,10 @@ $(document).ready(function(){
 });
 
 function startGameEventListener(){
-    let windowWidth = $(window).width(),
+    let homeContainer = $("#home-container"),
+        landingPage = $("#home-wrap"),
+        gameWrapper = "<div id='game-window-wrapper'></div>",
+        windowWidth = $(window).width(),
         canvasWidth = 1040,
         canvasHeight = 700;
 
@@ -15,18 +18,27 @@ function startGameEventListener(){
     $("#start-game").on('click', function(e) {
         e.preventDefault();
 
-        $("#home-container").html("<div id='game-window-wrapper'></div>");
+        // Apply animation styles to game field
+        animateGameField();
 
-        alert("width = " + canvasWidth + " height = " + canvasHeight);
+        // Show game field
+        landingPage.fadeToggle( "slow", function() {
+            // Append game wrapper
+            $(gameWrapper).hide().appendTo(homeContainer).fadeToggle('slow');
 
-        $('html, body').animate({
-            scrollTop: $("#game-window-wrapper").offset().top
-        }, 500, function(){
-
-            //start
+            // Start the game
             gameEngine.initGame('game-window-wrapper', canvasWidth, canvasHeight);
-			gameEngine.startGame();
+            gameEngine.startGame();
         });
-
     });
+}
+
+function animateGameField(){
+    let home = $("#home"),
+        homeContainer = $("#home-container");
+
+    home.addClass('game-bound');
+    homeContainer.css('display', 'table-cell');
+    homeContainer.css('vertical-align', 'middle');
+    homeContainer.css('width', '100%');
 }
