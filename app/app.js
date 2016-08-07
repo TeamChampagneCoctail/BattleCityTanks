@@ -9,11 +9,11 @@ function startGameEventListener(){
 
 
         $('html, body').animate({
-            scrollTop: $("#canvas-section").offset().top
+            scrollTop: $("#game-window-wrapper").offset().top
         }, 500, function(){
 
             //start
-            gameEngine.initGame('canvas-container');
+            gameEngine.initGame('game-window-wrapper');
 			gameEngine.startGame();
         });
 
