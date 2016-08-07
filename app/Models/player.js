@@ -6,17 +6,31 @@ var player = function() {
         width,
         height,
         imageSrc,
-        movingDirection;
+        movingDirection,
+        spriteObject;
 
-    function init(options) {
+    function init(options, animations) {
         x = options.x;
         y = options.y;
         width = options.width;
         height = options.height;
         imageSrc = options.imageSrc;
+        spriteObject = sprite.createSprite({
+            x: 0,
+            y: 0,
+            imageSrc: options.imageSrc,
+            animation: movingDirection,
+            animations: animations
+        });
+    }
+
+    function changeDirection(newDirection) {
+        movingDirection = newDirection;
+        spriteObject.animation = movingDirection;
     }
 
     return {
-        init
+        init,
+        changeDirection
     };
 }();
