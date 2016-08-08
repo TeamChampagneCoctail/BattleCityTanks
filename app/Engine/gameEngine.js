@@ -23,22 +23,45 @@ var gameEngine = function() {
             y: 10,
             width: 63,
             height: 75,
-            imageSrc: playerImageSrc
+            imageSrc: playerImageSrc,
+            startAnimation: 'up',
+            animations: {
+                'up': [
+                    0, 120, 40, 40,
+                    40, 120, 40, 40,
+                    80, 120, 40, 40
+                ],
+                'down': [
+                    0, 0, 40, 40,
+                    40, 0, 40, 40,
+                    80, 0, 40, 40
+                ],
+                'left': [
+                    0, 40, 40, 40,
+                    40, 40, 40, 40,
+                    80, 40, 40, 40
+                ],
+                'right': [
+                    0, 80, 40, 40,
+                    40, 80, 40, 40,
+                    80, 80, 40, 40
+                ],
+            }
         }, playerLayer);
 
         addLayers();
-        document.addEventListener('keydown', function(ev) {
-            let keyCode = ev.keyCode;
-            if (keyCode === 37) {
-                player.spriteObject.changeAnimation('left');
-            } else if (keyCode === 38) {
-                player.spriteObject.changeAnimation('up');
-            } else if (keyCode === 39) {
-                player.spriteObject.changeAnimation('right');
-            } else if (keyCode === 40) {
-                player.spriteObject.changeAnimation('down');
-            }
-        });
+        // document.addEventListener('keydown', function(ev) {
+        //     let keyCode = ev.keyCode;
+        //     if (keyCode === 37) {
+        //         player.spriteObject.changeAnimation('left');
+        //     } else if (keyCode === 38) {
+        //         player.spriteObject.changeAnimation('up');
+        //     } else if (keyCode === 39) {
+        //         player.spriteObject.changeAnimation('right');
+        //     } else if (keyCode === 40) {
+        //         player.spriteObject.changeAnimation('down');
+        //     }
+        // });
     }
 
     function startGame() {
