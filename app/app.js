@@ -7,8 +7,8 @@ function startGameEventListener() {
         landingPage = $("#home-wrap"),
         gameWrapper = "<div id='game-window-wrapper'></div>",
         windowWidth = $(window).width(),
-        canvasWidth = 900,
-        canvasHeight = 600;
+        canvasWidth = 1040,
+        canvasHeight = 680;
 
     if (windowWidth < 1400) {
         canvasWidth = 800;
