@@ -19,7 +19,7 @@ var Map= {
                 width: stage.getWidth(),
                 height: stage.getHeight(),
                 fillPatternImage: imageObj,
-                fillPatternRepeat: 'repeat-x'
+                fillPatternRepeat: 'repeat'
             });
 
             Map.backgroundLayer.add(backgroundImage);
