@@ -1,8 +1,8 @@
 var gameUnitsFactory = function() {
     'use strict';
 
-    const playerImageSrc = '../assets/images/tanks/player-spritesheet.png',
-        enemyImageSrc = '../assets/images/tanks/enemy-spritesheet.png';
+    const playerImageSrc = 'assets/images/tanks/player-spritesheet.png',
+        enemyImageSrc = 'assets/images/tanks/enemy-spritesheet.png';
 
     function createPlayer(startX, startY, uiLayer) {
         const width = 40,

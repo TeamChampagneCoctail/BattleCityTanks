@@ -50,8 +50,6 @@ var Map= {
         stage.add(Map.backgroundLayer);
         stage.add(Map.mapLayer);
 
-        //console.dir(Map.backgroundLayer);
-
         // 4. Draw the map
         Map.mapLayer.draw();
     }
