@@ -12,7 +12,7 @@ function startGameEventListener() {
 
     if (windowWidth < 1400) {
         canvasWidth = 800;
-        canvasHeight = 500;
+        canvasHeight = 480;
     }
 
     $("#start-game").on('click', function(e) {

@@ -1,8 +1,8 @@
 var gameEngine = function() {
     'use strict';
 
-    const playerStartX = 10,
-        playerStartY = 10;
+    const playerStartX = 0,
+        playerStartY =  0;
 
     let gameStage,
         enemiesLayer,
