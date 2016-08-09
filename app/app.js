@@ -1,16 +1,16 @@
-$(document).ready(function(){
+$(document).ready(function() {
     startGameEventListener();
 });
 
-function startGameEventListener(){
+function startGameEventListener() {
     let homeContainer = $("#home-container"),
         landingPage = $("#home-wrap"),
         gameWrapper = "<div id='game-window-wrapper'></div>",
         windowWidth = $(window).width(),
-        canvasWidth = 1040,
-        canvasHeight = 700;
+        canvasWidth = 900,
+        canvasHeight = 600;
 
-    if(windowWidth < 1400){
+    if (windowWidth < 1400) {
         canvasWidth = 800;
         canvasHeight = 500;
     }
@@ -22,7 +22,7 @@ function startGameEventListener(){
         animateGameField();
 
         // Show game field
-        landingPage.fadeToggle( "slow", function() {
+        landingPage.fadeToggle("slow", function() {
             // Append game wrapper
             $(gameWrapper).hide().appendTo(homeContainer).fadeToggle('slow');
 
@@ -33,7 +33,7 @@ function startGameEventListener(){
     });
 }
 
-function animateGameField(){
+function animateGameField() {
     let home = $("#home"),
         homeContainer = $("#home-container");
 
