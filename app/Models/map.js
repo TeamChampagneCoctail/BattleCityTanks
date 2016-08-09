@@ -5,7 +5,6 @@ var Map= {
     mapObjects: {},
 
     /* Functions */
-
     drawBackgroundImage: function(stage){
         Map.backgroundLayer = new Kinetic.Layer();
 
@@ -28,11 +27,15 @@ var Map= {
     },
 
     setupMapObjects: function(){
+        for(var i = 0; i < 5; i += 1){
+            MapObject.drawObject("crate", 0, 0);
 
+            
+        }
     },
 
     drawMapObjects: function(){
-
+        
     },
 
     /* Initialize */
@@ -45,6 +48,8 @@ var Map= {
         // 2. Draw objects
         Map.drawBackgroundImage(stage);
         Map.drawMapObjects();
+
+        Map.setupMapObjects();
 
         // 3. Add layers to main stage
         stage.add(Map.backgroundLayer);

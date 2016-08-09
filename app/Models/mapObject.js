@@ -1,9 +1,10 @@
 var MapObject = {
     /* Variables */
     objectLayer: null,
-    objectTypes: { "bush", "wall", "crate", "water"},
-    
+    objectTypes: ["bush", "wall", "crate", "water"],
+
     /* Functions */
+
     drawObject: function(type, coordX, coordY){
         MapObject.objectLayer = new Kinetic.Layer();
 
@@ -17,7 +18,7 @@ var MapObject = {
             case "water":
                 imageObj.src = ""; break;
             case "crate":
-                imageObj.src = ""; break;
+                imageObj.src = "assets/images/map/crate.jpg"; break;
             default:
                 imageObj.src = "";
         }
@@ -26,8 +27,8 @@ var MapObject = {
             var objectImage = new Kinetic.Image({
                 x: coordX,
                 y: coordY,
-                width: 54,
-                height: 54,
+                width: 40,
+                height: 40,
                 image: imageObj
             });
 
