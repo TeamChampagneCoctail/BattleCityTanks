@@ -29,23 +29,26 @@ var MapObject = function() {
             }
 
             let layer = this.objectLayer;
-            imageObj.onload = function() {
-                // var objectImage = new Kinetic.Image({
-                //     x: this.x,
-                //     y: this.y,
-                //     width: 40,
-                //     height: 40,
-                //     image: imageObj
-                // });
+            let x = this.x;
+            let y = this.y;
 
-                let objectImage = new Kinetic.Rect({
-                    x: 0,
-                    y: 0,
+            imageObj.onload = function() {
+                var objectImage = new Kinetic.Image({
+                    x: x,
+                    y: y,
                     width: 40,
                     height: 40,
-                    fillPatternImage: imageObj,
+                    image: imageObj
                 });
 
+                /*let objectImage = new Kinetic.Rect({
+                    x: this.x,
+                    y: this.y,
+                    width: 40,
+                    height: 40,
+                    fillPatternImage: imageObj
+                });*/
+                
                 layer.add(objectImage);
                 layer.draw();
             };

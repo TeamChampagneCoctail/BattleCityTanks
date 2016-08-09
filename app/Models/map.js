@@ -68,10 +68,12 @@ var Map = {
                     x: tileX,
                     y: tileY
                 });
-                console.log(tile);
+               // console.log(tile);
                 Map.mapObjects.push(tile);
             }
         }
+
+        console.dir(Map.objectsLayer);
     },
 
     drawMapObjects: function() {
@@ -82,9 +84,7 @@ var Map = {
     init: function(stage) {
         // 1. Initiate map layer & objects
         Map.mapLayer = new Kinetic.Layer();
-        Map.setupMapObjects();
-
-
+        
         // 2. Draw objects
         Map.drawBackgroundImage(stage);
         Map.drawMapObjects();
