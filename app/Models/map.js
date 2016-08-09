@@ -57,21 +57,26 @@ var Map = {
 
     setupMapObjects: function() {
         Map.objectsLayer = new Kinetic.Layer();
+
+        var imageObj = new Image();
         for (var row = 0; row < 26; row += 1) {
             for (var col = 0; col < 17; col += 1) {
                 let tileX = row * 40;
                 let tileY = col * 40;
                 let tile = Object.create(MapObject);
+
                 tile.init({
                     uiLayer: Map.objectsLayer,
                     type: 'crate',
                     x: tileX,
-                    y: tileY
+                    y: tileY,
+                    imageObject: imageObj.cloneNode()
                 });
-               // console.log(tile);
+                //console.log(tile);
                 Map.mapObjects.push(tile);
             }
         }
+      
 
         console.dir(Map.objectsLayer);
     },

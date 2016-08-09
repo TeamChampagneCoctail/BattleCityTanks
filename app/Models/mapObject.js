@@ -7,10 +7,12 @@ var MapObject = function() {
             this.type = options.type;
             this.x = options.x;
             this.y = options.y;
+            this.imageObject = options.imageObject;
             this.draw();
         },
         draw: function() {
-            var imageObj = new Image();
+            let imageObj = this.imageObject;
+
             switch (this.type) {
                 case "bush":
                     imageObj.src = "";
@@ -32,7 +34,7 @@ var MapObject = function() {
             let x = this.x;
             let y = this.y;
 
-            imageObj.onload = function() {
+            this.imageObject.onload = function() {
                 var objectImage = new Kinetic.Image({
                     x: x,
                     y: y,
@@ -40,14 +42,6 @@ var MapObject = function() {
                     height: 40,
                     image: imageObj
                 });
-
-                /*let objectImage = new Kinetic.Rect({
-                    x: this.x,
-                    y: this.y,
-                    width: 40,
-                    height: 40,
-                    fillPatternImage: imageObj
-                });*/
                 
                 layer.add(objectImage);
                 layer.draw();
