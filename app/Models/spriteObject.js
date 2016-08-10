@@ -4,7 +4,7 @@ var spriteObject = function() {
     let spriteObject;
 
     spriteObject = {
-        'init': function(options) {
+        init: function(options) {
             this._imageSrc = options.imageSrc;
             this.spriteSheet = new Kinetic.Sprite({
                 x: options.x,
@@ -17,7 +17,7 @@ var spriteObject = function() {
 
             return this;
         },
-        'createSprite': function createSprite(layer) {
+        createSprite: function createSprite(layer) {
             let image = new Image();
             let sheet = this.spriteSheet;
             image.onload = function() {
@@ -27,10 +27,16 @@ var spriteObject = function() {
             };
             image.src = this._imageSrc;
         },
-        'changeAnimation': function(animation) {
+        changeAnimation: function(animation) {
             if (this.spriteSheet.getAnimation() !== animation) {
                 this.spriteSheet.setAnimation(animation);
             }
+        },
+        changePosition: function(position) {
+            let currentX = this.spriteSheet.getX();
+            let currentY = this.spriteSheet.getY();
+            this.spriteSheet.setX(currentX + position.x);
+            this.spriteSheet.setY(currentY + position.y);
         }
     };
 

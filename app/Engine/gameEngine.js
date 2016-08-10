@@ -2,7 +2,7 @@ var gameEngine = function() {
     'use strict';
 
     const playerStartX = 0,
-        playerStartY =  0;
+        playerStartY = 0;
 
     let gameStage,
         enemiesLayer,
@@ -24,10 +24,25 @@ var gameEngine = function() {
         let enemyUnit1 = gameUnitsFactory.createEnemy(150, 50, enemiesLayer);
         let enemyUnit2 = gameUnitsFactory.createEnemy(150, 150, enemiesLayer);
 
-        document.addEventListener('click', function() {
-            playerUnit.sprite.changeAnimation('down');
-            enemyUnit1.sprite.changeAnimation('up');
-            enemyUnit2.sprite.changeAnimation('right');
+        document.addEventListener('keydown', function(ev) {
+            let keyCode = ev.keyCode;
+            if (keyCode === 37) {
+                playerUnit.sprite.changeAnimation('left');
+                let x = playerUnit.sprite.spriteSheet.getX();
+                playerUnit.sprite.spriteSheet.setX(x - 5);
+            } else if (keyCode === 38) {
+                playerUnit.sprite.changeAnimation('up');
+                let y = playerUnit.sprite.spriteSheet.getY();
+                playerUnit.sprite.spriteSheet.setY(y - 5);
+            } else if (keyCode === 39) {
+                playerUnit.sprite.changeAnimation('right');
+                let x = playerUnit.sprite.spriteSheet.getX();
+                playerUnit.sprite.spriteSheet.setX(x + 5);
+            } else if (keyCode === 40) {
+                playerUnit.sprite.changeAnimation('down');
+                let y = playerUnit.sprite.spriteSheet.getY();
+                playerUnit.sprite.spriteSheet.setY(y + 5);
+            }
         });
 
         addLayers();

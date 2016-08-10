@@ -7,7 +7,7 @@ var gameUnitsFactory = function() {
     function createPlayer(startX, startY, uiLayer) {
         const width = 40,
             height = 40,
-            startAnimation = 'up';
+            startAnimation = 'right';
 
         let newPlayer = Object.create(player);
         newPlayer.init({
