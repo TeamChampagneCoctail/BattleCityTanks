@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    animateLandingPageElements();
     startGameEventListener();
 });
 
@@ -41,4 +42,13 @@ function animateGameField() {
     homeContainer.css('display', 'table-cell');
     homeContainer.css('vertical-align', 'middle');
     homeContainer.css('width', '100%');
+}
+
+function animateLandingPageElements(){
+    $('#start-game').addClass('animated bounceInUp');
+    $('#home .game-controls .left').addClass('animated bounceInLeft');
+    $('#home .game-controls .right').addClass('animated bounceInRight');
+    $('#home .page-intro .intro-section h2').addClass('animated slideInDown');
+    $('#home .page-intro .intro-section .game-intro > h3').addClass('animated fadeInUp');
+    $('#home .logo').addClass('animated pulse');
 }

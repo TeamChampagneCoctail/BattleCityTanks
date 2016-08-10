@@ -97,6 +97,7 @@ body{
     color:#fff;
     font-size: 30px;
     margin:20px 0;
+
 }
 #home .page-intro .intro-section .game-intro{
     float: left;
@@ -108,6 +109,8 @@ body{
     color: #dca12e;
     font-size: 30px;
     margin: 20px 0 50px 0;
+    -webkit-animation-delay: 1s; /* Chrome, Safari, Opera */
+    animation-delay: 1s;
 }
 #home .game-controls .left > p{
     line-height: 160px;
@@ -117,9 +120,13 @@ body{
 }
 #home .game-controls .left {
     padding-top: 90px;
+    -webkit-animation-delay: 1s; /* Chrome, Safari, Opera */
+    animation-delay: 1s;
 }
 #home .game-controls .right {
     padding-right: 40px;
+    -webkit-animation-delay: 1.5s; /* Chrome, Safari, Opera */
+    animation-delay: 1.5s;
 }
 #home .game-controls .right > p{
     font-family: ralewaysemibold;
@@ -175,6 +182,8 @@ body{
     -moz-transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
     -webkit-transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
     -o-transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+    -webkit-animation-delay: 2s; /* Chrome, Safari, Opera */
+    animation-delay: 2s;
 }
 #start-game-btn button:hover{
     background:#e3e3e3;
