@@ -89,6 +89,8 @@ var gameEngine = function() {
                 playerUnit.sprite.changeAnimation('down');
                 let y = playerUnit.sprite.spriteSheet.getY();
                 playerUnit.sprite.spriteSheet.setY(y + 5);
+            } else if (keyCode == 32){
+                playerUnit.fire(); //todo add direction
             }
         });
 
