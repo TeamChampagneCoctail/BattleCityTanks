@@ -22,5 +22,12 @@ var tank = function(parent) {
         }
     });
 
+    Object.defineProperty(tank, 'fire', {
+        value: function(){
+            
+        }
+    });
+    
+
     return tank;
 }(gameObject);

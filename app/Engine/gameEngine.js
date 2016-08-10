@@ -94,6 +94,8 @@ var gameEngine = function() {
                 playerUnit.sprite.changeAnimation('down');
                 newCoord.x = currentCoord.x;
                 newCoord.y = currentCoord.y + 5;
+            } else if (keyCode == 32){
+                playerUnit.fire(); //todo add direction
             }
 
             let canGo = Map.isNextPositionAvailable({
