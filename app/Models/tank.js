@@ -1,13 +1,11 @@
-var tank = function() {
+var tank = function(parent) {
     'use strict';
 
-    let tank = {
-        'init': function(options, layer) {
-            this.x = options.x;
-            this.x = options.x;
-            this.y = options.y;
-            this.width = options.width;
-            this.height = options.height;
+    let tank = Object.create(parent);
+
+    Object.defineProperty(tank, 'init', {
+        value: function(options, layer) {
+            parent.init.call(this, options.x, options.y, options, options.width, options.height);
             this.sprite = Object.create(spriteObject);
 
             this.sprite.init({
@@ -22,7 +20,7 @@ var tank = function() {
 
             return this;
         }
-    };
+    });
 
     return tank;
-}();
+}(gameObject);
