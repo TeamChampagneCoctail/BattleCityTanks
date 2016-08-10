@@ -92,6 +92,34 @@ var Map = function() {
             // 4. Draw the map
             map.mapLayer.draw();
         },
+
+        isNextPositionAvailable: function(tileBounds, canvasWidth, canvasHeight) {
+            let corners = [{
+                x: tileBounds.x,
+                y: tileBounds.y
+            }, {
+                x: tileBounds.x + tileBounds.width,
+                y: tileBounds.y
+            }, {
+                x: tileBounds.x,
+                y: tileBounds.y + tileBounds.height
+            }, {
+                x: tileBounds.x + tileBounds.width,
+                y: tileBounds.y + tileBounds.height
+            }];
+
+            for (let corner of corners) {
+                let row = (corner.y % canvasHeight) / 40 | 0;
+                let col = (corner.x % canvasWidth) / 40 | 0;
+                console.log(row);
+                console.log(col);
+                if (mapPrototype[row][col] !== ' ') {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     };
 
     return map;
