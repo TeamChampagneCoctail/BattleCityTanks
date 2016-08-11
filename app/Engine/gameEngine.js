@@ -43,8 +43,9 @@ var gameEngine = function() {
         playerUnit.move(direction, Map.isNextPositionAvailable);
     }
 
-    function executeFiring() {
+    function executeFiring(direction) {
         // Create a projectile starting from player's direction'.
+        playerUnit.fire(direction)
     }
 
     function reset() {

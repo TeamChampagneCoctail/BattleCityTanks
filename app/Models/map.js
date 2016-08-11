@@ -69,6 +69,8 @@ var Map = function() {
                     }
                 }
             }
+
+            console.dir(map.objectsLayer);
         },
 
         drawMapObjects: function() {
