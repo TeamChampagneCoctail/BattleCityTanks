@@ -66,7 +66,7 @@ var gameEngine = function() {
         let dir = playerUnit.movingDirection;
         bullet = gameUnitsFactory.createBullet(playerUnit.x + playerUnit.width / 2, playerUnit.y - 13, dir);
         bullet.render(projectilesLayer);
-        // gameAnimationLoop();
+        gameAnimationLoop();
     }
 
     function gameAnimationLoop() {

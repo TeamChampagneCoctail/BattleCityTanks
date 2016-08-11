@@ -7,6 +7,8 @@ var bullet = function(parent) {
         value: function(options, layer) {
             parent.init.call(this, options.x, options.y, options, options.width, options.height);
             this.sprite = Object.create(spriteObject);
+            this.speed = options.speed;
+            this.movingDirection = options.movingDirection;
             this.sprite.init({
                 x: this.x,
                 y: this.y,
