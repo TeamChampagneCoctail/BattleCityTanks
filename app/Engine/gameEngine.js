@@ -20,9 +20,9 @@ var gameEngine = function() {
 
         // Creating units.
         Map.init(gameStage);
-        playerUnit = gameUnitsFactory.createPlayer(playerStartX, playerStartY, playerLayer);
-        let enemyUnit1 = gameUnitsFactory.createEnemy(canvasWidth - 40, 0, enemiesLayer);
-        let enemyUnit2 = gameUnitsFactory.createEnemy(canvasWidth - 40, 240, enemiesLayer);
+        playerUnit = gameUnitsFactory.createPlayer(playerStartX, playerStartY);
+        let enemyUnit1 = gameUnitsFactory.createEnemy(canvasWidth - 40, 0);
+        let enemyUnit2 = gameUnitsFactory.createEnemy(canvasWidth - 40, 240);
         enemyUnit2.sprite.changeAnimation('left');
 
         // Moving enemy without animation.
@@ -71,6 +71,15 @@ var gameEngine = function() {
 
             }
         }
+
+        document.addEventListener('click', function() {
+            // debugger;
+            playerUnit.render(playerLayer);
+            enemyUnit1.render(enemiesLayer);
+            enemyUnit2.render(enemiesLayer);
+        });
+
+
         document.addEventListener('keydown', function(ev) {
             let keyCode = ev.keyCode;
             let currentCoord = {
@@ -94,7 +103,7 @@ var gameEngine = function() {
                 playerUnit.sprite.changeAnimation('down');
                 newCoord.x = currentCoord.x;
                 newCoord.y = currentCoord.y + 5;
-            } else if (keyCode == 32){
+            } else if (keyCode == 32) {
                 playerUnit.fire(); //todo add direction
             }
 

@@ -32,11 +32,11 @@ var spriteObject = function() {
                 this.spriteSheet.setAnimation(animation);
             }
         },
-        changePosition: function(position) {
+        changePosition: function(x, y) {
             let currentX = this.spriteSheet.getX();
             let currentY = this.spriteSheet.getY();
-            this.spriteSheet.setX(currentX + position.x);
-            this.spriteSheet.setY(currentY + position.y);
+            this.spriteSheet.setX(currentX + x);
+            this.spriteSheet.setY(currentY + y);
         }
     };
 
