@@ -43,8 +43,9 @@ var gameEngine = function() {
         playerUnit.move(direction, Map.isNextPositionAvailable);
     }
 
-    function executeFiring() {
+    function executeFiring(direction) {
         let movingDirection = playerUnit.movingDirection;
+        playerUnit.fire(direction)
     }
 
     function reset() {
