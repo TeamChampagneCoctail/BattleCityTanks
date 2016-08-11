@@ -92,7 +92,6 @@ var gameUnitsFactory = function() {
     function createBullet(startX, startY, direction) {
         const width = 13,
             height = 13,
-            startDirection = direction,
             speed = 10;
 
         let newBullet = Object.create(bullet);
@@ -102,20 +101,20 @@ var gameUnitsFactory = function() {
             width: width,
             height: height,
             speed: speed,
-            imageSrc: enemyImageSrc,
-            movingDirection: startDirection,
+            imageSrc: bulletImageSrc,
+            movingDirection: direction,
             animations: {
                 'up': [
-                    0, 120, 40, 40,
+                    0, 13, 13, 13,
                 ],
                 'down': [
-                    0, 0, 40, 40,
+                    13, 13, 13, 13,
                 ],
                 'left': [
-                    0, 40, 40, 40,
+                    0, 0, 13, 13,
                 ],
                 'right': [
-                    0, 80, 40, 40,
+                    13, 0, 13, 13,
                 ],
             }
         });

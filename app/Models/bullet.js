@@ -9,18 +9,36 @@ var bullet = function(parent) {
             this.sprite = Object.create(spriteObject);
 
             this.sprite.init({
-                x: this.x,
-                y: this.y,
-                imageSrc: options.imageSrc,
-                frameRate: options.frameRate,
-                animation: options.startAnimation,
-                animations: options.animations
-            })
-            .createSprite(layer);
+                    x: this.x,
+                    y: this.y,
+                    imageSrc: options.imageSrc,
+                    frameRate: options.frameRate,
+                    animation: options.startAnimation,
+                    animations: options.animations
+                })
+                .createSprite(layer);
 
             return this;
         }
     });
-    
-    return tank;
+
+    Object.defineProperty(bullet, 'render', {
+        value: function(uiLayer) {
+            this.sprite.createSprite(uiLayer);
+            return this;
+        }
+    });
+
+    Object.defineProperty(bullet, 'move', {
+        value: function(direction) {
+            let nextX = this.x + (direction.x * this.speed);
+            let nextY = this.y + (direction.y * this.speed);
+            this.x = nextX;
+            this.y = nextY;
+            this.sprite.changeAnimation(this.movingDirection);
+            this.sprite.changePosition(this.x, this.y);
+        }
+    });
+
+    return bullet;
 }(gameObject);
