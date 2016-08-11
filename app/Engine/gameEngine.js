@@ -1,125 +1,61 @@
 var gameEngine = function() {
     'use strict';
 
-    const playerStartX = 0,
-        playerStartY = 0;
+    const playerStartX = 11 * 40,
+        playerStartY = 16 * 40,
+        enemyStartX = 0,
+        enemyStartY = 0,
+        enemiesOnMapCount = 3,
+        totalEnemiesCount = 6;
 
     let uiObject,
         enemiesLayer,
         playerLayer,
-        playerUnit;
+        playerUnit,
+        enemies = [],
+        unitsFactory;
 
-    function initGame(uiObject) {
+    function initGame(uiObject, inputProvider, unitsFactory) {
+        // debugger;
         uiObject.createGameStage();
         playerLayer = uiObject.getNewLayer();
         enemiesLayer = uiObject.getNewLayer();
+        unitsFactory = unitsFactory;
 
-
-        // Creating units.
         Map.init(uiObject.gameStage);
-        playerUnit = gameUnitsFactory.createPlayer(playerStartX, playerStartY).render(playerLayer);
-        let enemyUnit1 = gameUnitsFactory.createEnemy(ui.canvasWidth - 40, 0).render(enemiesLayer);
-        let enemyUnit2 = gameUnitsFactory.createEnemy(ui.canvasWidth - 40, 240).render(enemiesLayer);
-        enemyUnit2.sprite.changeAnimation('left');
-
-        console.log(playerLayer);
-        console.log(enemiesLayer);
-
-        // Moving enemy without animation.
-        // for (var i = 0; i < 9999; i++) {
-        //     if (enemyUnit1.width.startAnimation === 'down') {
-
-        //         let y = enemyUnit1.sprite.spriteSheet.getY();
-        //         enemyUnit1.sprite.spriteSheet.setY(y + 5);
-        //     } else if (enemyUnit1.width.startAnimation === 'right') {
-
-        //         let x = enemyUnit1.sprite.spriteSheet.getX();
-        //         enemyUnit1.sprite.spriteSheet.setX(x + 5);
-        //     } else if (enemyUnit1.width.startAnimation === 'up') {
-
-        //         let y = enemyUnit1.sprite.spriteSheet.getY();
-        //         enemyUnit1.sprite.spriteSheet.setY(y - 5);
-        //     } else if (enemyUnit1.width.startAnimation === 'left') {
-
-        //         let x = enemyUnit1.sprite.spriteSheet.getX();
-        //         enemyUnit1.sprite.spriteSheet.setX(x - 5);
-        //     }
-
-        //     if (enemyUnit1.sprite.spriteSheet.getY() === canvasHeight - 40 &&
-        //         enemyUnit1.width.startAnimation === 'down') {
-
-        //         enemyUnit1.sprite.changeAnimation('left');
-        //         enemyUnit1.width.startAnimation = 'left';
-
-        //     } else if (enemyUnit1.sprite.spriteSheet.getX() === 0 &&
-        //         enemyUnit1.width.startAnimation === 'left') {
-
-        //         enemyUnit1.sprite.changeAnimation('up');
-        //         enemyUnit1.width.startAnimation = 'up';
-
-        //     } else if (enemyUnit1.sprite.spriteSheet.getY() === 0 &&
-        //         enemyUnit1.width.startAnimation === 'up') {
-
-        //         enemyUnit1.sprite.changeAnimation('right');
-        //         enemyUnit1.width.startAnimation = 'right';
-
-        //     } else if (enemyUnit1.sprite.spriteSheet.getX() === canvasWidth - 40 &&
-        //         enemyUnit1.width.startAnimation === 'right') {
-
-        //         enemyUnit1.sprite.changeAnimation('down');
-        //         enemyUnit1.width.startAnimation = 'down';
-
-        //     }
-        // }
-
-        document.addEventListener('keydown', function(ev) {
-            let keyCode = ev.keyCode;
-            let currentCoord = {
-                x: playerUnit.sprite.spriteSheet.getX(),
-                y: playerUnit.sprite.spriteSheet.getY()
-            };
-            let newCoord = {};
-            if (keyCode === 37) {
-                playerUnit.sprite.changeAnimation('left');
-                newCoord.x = currentCoord.x - 5;
-                newCoord.y = currentCoord.y;
-            } else if (keyCode === 38) {
-                playerUnit.sprite.changeAnimation('up');
-                newCoord.x = currentCoord.x;
-                newCoord.y = currentCoord.y - 5;
-            } else if (keyCode === 39) {
-                playerUnit.sprite.changeAnimation('right');
-                newCoord.x = currentCoord.x + 5;
-                newCoord.y = currentCoord.y;
-            } else if (keyCode === 40) {
-                playerUnit.sprite.changeAnimation('down');
-                newCoord.x = currentCoord.x;
-                newCoord.y = currentCoord.y + 5;
-            } else if (keyCode == 32) {
-                playerUnit.fire(); //todo add direction
-            }
-
-            let canGo = Map.isNextPositionAvailable({
-                x: newCoord.x,
-                y: newCoord.y,
-                width: 39,
-                height: 39
-            }, ui.canvasWidth, ui.canvasHeight);
-
-            console.log(canGo);
-
-            if (canGo) {
-                playerUnit.sprite.spriteSheet.setX(newCoord.x);
-                playerUnit.sprite.spriteSheet.setY(newCoord.y);
-            }
-        });
+        playerUnit = unitsFactory.createPlayer(playerStartX, playerStartY).render(playerLayer);
+        createEnemies(unitsFactory);
 
         uiObject.addLayer(playerLayer)
             .addLayer(enemiesLayer);
     }
 
     function startGame() {
+        inputProvider.listenForCommand(executePlayerMoving, executeFiring);
+        // gameAnimationLoop();
+    }
 
+    function gameAnimationLoop() {
+        // debugger;
+    }
+
+    function executePlayerMoving(direction) {
+        playerUnit.move(direction, Map.isNextPositionAvailable);
+    }
+
+    function executeFiring() {
+        // Create a projectile starting from player's direction'.
+    }
+
+    function reset() {
+
+    }
+
+    function createEnemies(unitsFactory) {
+        while (enemies.length < enemiesOnMapCount) {
+            let newEnemy = unitsFactory.createEnemy(enemyStartX, enemyStartY).render(enemiesLayer);
+            enemies.push(newEnemy);
+        }
     }
 
     return {

@@ -29,7 +29,7 @@ function startGameEventListener() {
 
             // Start the game
             ui.init(canvasWidth, canvasHeight, 'game-window-wrapper');
-            gameEngine.initGame(ui);
+            gameEngine.initGame(ui, inputProvider, gameUnitsFactory);
             gameEngine.startGame();
         });
     });

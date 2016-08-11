@@ -4,10 +4,11 @@ var gameUnitsFactory = function() {
     const playerImageSrc = 'assets/images/tanks/player-spritesheet.png',
         enemyImageSrc = 'assets/images/tanks/enemy-spritesheet.png';
 
-    function createPlayer(startX, startY, uiLayer) {
-        const width = 40,
-            height = 40,
-            startAnimation = 'right';
+    function createPlayer(startX, startY) {
+        const width = 39,
+            height = 39,
+            startDirection = 'up',
+            speed = 5;
 
         let newPlayer = Object.create(player);
         newPlayer.init({
@@ -15,8 +16,9 @@ var gameUnitsFactory = function() {
             y: startY,
             width: width,
             height: height,
+            speed: speed,
             imageSrc: playerImageSrc,
-            startAnimation: startAnimation,
+            movingDirection: startDirection,
             animations: {
                 'up': [
                     0, 120, 40, 40,
@@ -39,15 +41,16 @@ var gameUnitsFactory = function() {
                     80, 80, 40, 40
                 ],
             }
-        }, uiLayer);
+        });
 
         return newPlayer;
     }
 
-    function createEnemy(startX, startY, uiLayer) {
-        const width = 40,
-            height = 40,
-            startAnimation = 'down';
+    function createEnemy(startX, startY) {
+        const width = 39,
+            height = 39,
+            startDirection = 'right',
+            speed = 5;
 
         let newEnemy = Object.create(enemy);
         newEnemy.init({
@@ -55,8 +58,9 @@ var gameUnitsFactory = function() {
             y: startY,
             width: width,
             height: height,
+            speed: speed,
             imageSrc: enemyImageSrc,
-            startAnimation: startAnimation,
+            movingDirection: startDirection,
             animations: {
                 'up': [
                     0, 120, 40, 40,
@@ -79,7 +83,7 @@ var gameUnitsFactory = function() {
                     80, 80, 40, 40
                 ],
             }
-        }, uiLayer);
+        });
 
         return newEnemy;
     }

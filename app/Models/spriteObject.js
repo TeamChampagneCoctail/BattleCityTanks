@@ -33,10 +33,8 @@ var spriteObject = function() {
             }
         },
         changePosition: function(x, y) {
-            let currentX = this.spriteSheet.getX();
-            let currentY = this.spriteSheet.getY();
-            this.spriteSheet.setX(currentX + x);
-            this.spriteSheet.setY(currentY + y);
+            this.spriteSheet.setX(x);
+            this.spriteSheet.setY(y);
         }
     };
 

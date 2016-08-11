@@ -93,7 +93,9 @@ var Map = function() {
             map.mapLayer.draw();
         },
 
-        isNextPositionAvailable: function(tileBounds, canvasWidth, canvasHeight) {
+        isNextPositionAvailable: function(tileBounds) {
+            let canvasWidth = mapPrototype[0].length * 40;
+            let canvasHeight = mapPrototype.length * 40;
             let corners = [{
                 x: tileBounds.x,
                 y: tileBounds.y
@@ -111,8 +113,6 @@ var Map = function() {
             for (let corner of corners) {
                 let row = (corner.y % canvasHeight) / 40 | 0;
                 let col = (corner.x % canvasWidth) / 40 | 0;
-                console.log(row);
-                console.log(col);
                 if (mapPrototype[row][col] !== ' ') {
                     return false;
                 }
