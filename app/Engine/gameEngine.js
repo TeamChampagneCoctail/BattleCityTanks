@@ -48,7 +48,7 @@ var gameEngine = function() {
         Map.init(uiObject.gameStage);
         playerUnit = unitsFactory.createPlayer(playerStartX, playerStartY).render(playerLayer);
         createEnemies(unitsFactory);
-
+        executeEnemyMoving();
         uiObject.addLayer(playerLayer)
             .addLayer(enemiesLayer)
             .addLayer(projectilesLayer);
@@ -80,6 +80,12 @@ var gameEngine = function() {
             let newEnemy = unitsFactory.createEnemy(enemyStartX, enemyStartY).render(enemiesLayer);
             enemies.push(newEnemy);
         }
+    }
+
+    function executeEnemyMoving(){
+      for (let enemy of enemies){
+        enemy.move(Map.isNextPositionAvailable);
+      }
     }
 
     return {
