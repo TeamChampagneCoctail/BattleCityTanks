@@ -94,8 +94,8 @@ var Map = function() {
         },
 
         isNextPositionAvailable: function(tileBounds) {
-            let canvasWidth = mapPrototype[0].length * 40;
-            let canvasHeight = mapPrototype.length * 40;
+            let mapWidth = mapPrototype[0].length * 40;
+            let mapHeight = mapPrototype.length * 40;
             let corners = [{
                 x: tileBounds.x,
                 y: tileBounds.y
@@ -111,9 +111,10 @@ var Map = function() {
             }];
 
             for (let corner of corners) {
-                let row = (corner.y % canvasHeight) / 40 | 0;
-                let col = (corner.x % canvasWidth) / 40 | 0;
-                if (mapPrototype[row][col] !== ' ') {
+                let row = (corner.y % mapHeight) / 40 | 0;
+                let col = (corner.x % mapWidth) / 40 | 0;
+                let isOutOfBounds = corner.x < 0 || corner.x > mapWidth || corner.y < 0 || corner.y > mapHeight;
+                if (isOutOfBounds || mapPrototype[row][col] !== ' ') {
                     return false;
                 }
             }
