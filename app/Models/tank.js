@@ -9,6 +9,7 @@ var tank = function(parent) {
             this.speed = options.speed;
             this.movingDirection = options.movingDirection;
             this.sprite = Object.create(spriteObject);
+            this.isAlive = true;
             this.sprite.init({
                 x: this.x,
                 y: this.y,

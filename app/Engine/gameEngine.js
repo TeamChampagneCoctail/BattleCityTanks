@@ -13,17 +13,17 @@ var gameEngine = function() {
         playerLayer,
         playerUnit,
         enemies = [],
+        projectiles = [],
         unitsFactory;
 
     function initGame(uiObject, inputProvider, unitsFactory) {
-        // debugger;
         uiObject.createGameStage();
         playerLayer = uiObject.getNewLayer();
         enemiesLayer = uiObject.getNewLayer();
         unitsFactory = unitsFactory;
 
         Map.init(uiObject.gameStage);
-        playerUnit = unitsFactory.createPlayer(playerStartX, playerStartY).render(playerLayer);
+        playerUnit = unitsFactory.createPlayer(playerStartX, playerStartY).render(enemiesLayer);
         createEnemies(unitsFactory);
 
         uiObject.addLayer(playerLayer)
@@ -44,7 +44,7 @@ var gameEngine = function() {
     }
 
     function executeFiring() {
-        // Create a projectile starting from player's direction'.
+        let movingDirection = playerUnit.movingDirection;
     }
 
     function reset() {
