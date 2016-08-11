@@ -28,7 +28,8 @@ function startGameEventListener() {
             $(gameWrapper).hide().appendTo(homeContainer).fadeToggle('slow');
 
             // Start the game
-            gameEngine.initGame('game-window-wrapper', canvasWidth, canvasHeight);
+            ui.init(canvasWidth, canvasHeight, 'game-window-wrapper');
+            gameEngine.initGame(ui);
             gameEngine.startGame();
         });
     });
@@ -44,7 +45,7 @@ function animateGameField() {
     homeContainer.css('width', '100%');
 }
 
-function animateLandingPageElements(){
+function animateLandingPageElements() {
     $('#start-game').addClass('animated bounceInUp');
     $('#home .game-controls .left').addClass('animated bounceInLeft');
     $('#home .game-controls .right').addClass('animated bounceInRight');

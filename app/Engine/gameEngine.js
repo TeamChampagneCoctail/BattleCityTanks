@@ -4,81 +4,73 @@ var gameEngine = function() {
     const playerStartX = 0,
         playerStartY = 0;
 
-    let gameStage,
+    let uiObject,
         enemiesLayer,
         playerLayer,
         playerUnit;
 
-    function initGame(container, canvasWidth, canvasHeight) {
-        gameStage = new Kinetic.Stage({
-            container: container,
-            width: canvasWidth,
-            height: canvasHeight
-        });
-        playerLayer = new Kinetic.Layer();
-        enemiesLayer = new Kinetic.Layer();
+    function initGame(uiObject) {
+        uiObject.createGameStage();
+        playerLayer = uiObject.getNewLayer();
+        enemiesLayer = uiObject.getNewLayer();
+
 
         // Creating units.
-        Map.init(gameStage);
-        playerUnit = gameUnitsFactory.createPlayer(playerStartX, playerStartY);
-        let enemyUnit1 = gameUnitsFactory.createEnemy(canvasWidth - 40, 0);
-        let enemyUnit2 = gameUnitsFactory.createEnemy(canvasWidth - 40, 240);
+        Map.init(uiObject.gameStage);
+        playerUnit = gameUnitsFactory.createPlayer(playerStartX, playerStartY).render(playerLayer);
+        let enemyUnit1 = gameUnitsFactory.createEnemy(ui.canvasWidth - 40, 0).render(enemiesLayer);
+        let enemyUnit2 = gameUnitsFactory.createEnemy(ui.canvasWidth - 40, 240).render(enemiesLayer);
         enemyUnit2.sprite.changeAnimation('left');
 
+        console.log(playerLayer);
+        console.log(enemiesLayer);
+
         // Moving enemy without animation.
-        for (var i = 0; i < 9999; i++) {
-            if (enemyUnit1.width.startAnimation === 'down') {
+        // for (var i = 0; i < 9999; i++) {
+        //     if (enemyUnit1.width.startAnimation === 'down') {
 
-                let y = enemyUnit1.sprite.spriteSheet.getY();
-                enemyUnit1.sprite.spriteSheet.setY(y + 5);
-            } else if (enemyUnit1.width.startAnimation === 'right') {
+        //         let y = enemyUnit1.sprite.spriteSheet.getY();
+        //         enemyUnit1.sprite.spriteSheet.setY(y + 5);
+        //     } else if (enemyUnit1.width.startAnimation === 'right') {
 
-                let x = enemyUnit1.sprite.spriteSheet.getX();
-                enemyUnit1.sprite.spriteSheet.setX(x + 5);
-            } else if (enemyUnit1.width.startAnimation === 'up') {
+        //         let x = enemyUnit1.sprite.spriteSheet.getX();
+        //         enemyUnit1.sprite.spriteSheet.setX(x + 5);
+        //     } else if (enemyUnit1.width.startAnimation === 'up') {
 
-                let y = enemyUnit1.sprite.spriteSheet.getY();
-                enemyUnit1.sprite.spriteSheet.setY(y - 5);
-            } else if (enemyUnit1.width.startAnimation === 'left') {
+        //         let y = enemyUnit1.sprite.spriteSheet.getY();
+        //         enemyUnit1.sprite.spriteSheet.setY(y - 5);
+        //     } else if (enemyUnit1.width.startAnimation === 'left') {
 
-                let x = enemyUnit1.sprite.spriteSheet.getX();
-                enemyUnit1.sprite.spriteSheet.setX(x - 5);
-            }
+        //         let x = enemyUnit1.sprite.spriteSheet.getX();
+        //         enemyUnit1.sprite.spriteSheet.setX(x - 5);
+        //     }
 
-            if (enemyUnit1.sprite.spriteSheet.getY() === canvasHeight - 40 &&
-                enemyUnit1.width.startAnimation === 'down') {
+        //     if (enemyUnit1.sprite.spriteSheet.getY() === canvasHeight - 40 &&
+        //         enemyUnit1.width.startAnimation === 'down') {
 
-                enemyUnit1.sprite.changeAnimation('left');
-                enemyUnit1.width.startAnimation = 'left';
+        //         enemyUnit1.sprite.changeAnimation('left');
+        //         enemyUnit1.width.startAnimation = 'left';
 
-            } else if (enemyUnit1.sprite.spriteSheet.getX() === 0 &&
-                enemyUnit1.width.startAnimation === 'left') {
+        //     } else if (enemyUnit1.sprite.spriteSheet.getX() === 0 &&
+        //         enemyUnit1.width.startAnimation === 'left') {
 
-                enemyUnit1.sprite.changeAnimation('up');
-                enemyUnit1.width.startAnimation = 'up';
+        //         enemyUnit1.sprite.changeAnimation('up');
+        //         enemyUnit1.width.startAnimation = 'up';
 
-            } else if (enemyUnit1.sprite.spriteSheet.getY() === 0 &&
-                enemyUnit1.width.startAnimation === 'up') {
+        //     } else if (enemyUnit1.sprite.spriteSheet.getY() === 0 &&
+        //         enemyUnit1.width.startAnimation === 'up') {
 
-                enemyUnit1.sprite.changeAnimation('right');
-                enemyUnit1.width.startAnimation = 'right';
+        //         enemyUnit1.sprite.changeAnimation('right');
+        //         enemyUnit1.width.startAnimation = 'right';
 
-            } else if (enemyUnit1.sprite.spriteSheet.getX() === canvasWidth - 40 &&
-                enemyUnit1.width.startAnimation === 'right') {
+        //     } else if (enemyUnit1.sprite.spriteSheet.getX() === canvasWidth - 40 &&
+        //         enemyUnit1.width.startAnimation === 'right') {
 
-                enemyUnit1.sprite.changeAnimation('down');
-                enemyUnit1.width.startAnimation = 'down';
+        //         enemyUnit1.sprite.changeAnimation('down');
+        //         enemyUnit1.width.startAnimation = 'down';
 
-            }
-        }
-
-        document.addEventListener('click', function() {
-            // debugger;
-            playerUnit.render(playerLayer);
-            enemyUnit1.render(enemiesLayer);
-            enemyUnit2.render(enemiesLayer);
-        });
-
+        //     }
+        // }
 
         document.addEventListener('keydown', function(ev) {
             let keyCode = ev.keyCode;
@@ -112,7 +104,7 @@ var gameEngine = function() {
                 y: newCoord.y,
                 width: 39,
                 height: 39
-            }, canvasWidth, canvasHeight);
+            }, ui.canvasWidth, ui.canvasHeight);
 
             console.log(canGo);
 
@@ -122,16 +114,12 @@ var gameEngine = function() {
             }
         });
 
-        addLayers();
+        uiObject.addLayer(playerLayer)
+            .addLayer(enemiesLayer);
     }
 
     function startGame() {
 
-    }
-
-    function addLayers() {
-        gameStage.add(playerLayer);
-        gameStage.add(enemiesLayer);
     }
 
     return {
