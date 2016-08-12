@@ -34,9 +34,9 @@ var tank = function(parent) {
         value: function(unitsFactory) {
             let direction = this.movingDirection;
             let bulletX = (direction === 'up' || direction === 'down') ? (this.x + this.width / 2 - 7) :
-                direction === 'left' ? this.x - 7 : this.x + this.width + 7;
-            let bulletY = (direction === 'left' || direction === 'right') ? (this.y + this.height / 2 - 7) :
-                direction === 'up' ? this.y - 7 : this.y + this.height + 7;
+                direction === 'left' ? this.x - 10 : this.x + this.width + 10;
+            let bulletY = (direction === 'left' || direction === 'right') ? (this.y + this.height / 2 - 10) :
+                direction === 'up' ? this.y - 10 : this.y + this.height + 10;
             let bullet = unitsFactory.createBullet(bulletX, bulletY, direction);
 
             return bullet;

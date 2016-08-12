@@ -1,8 +1,8 @@
 var gameEngine = function() {
     'use strict';
 
-    const playerStartX = 10 * 40,
-        playerStartY = 0 * 40,
+    const playerStartX = 11 * 40,
+        playerStartY = 16 * 40,
         enemyStartX = 0,
         enemyStartY = 0,
         enemiesOnMapCount = 3,
@@ -90,7 +90,7 @@ var gameEngine = function() {
 
             if (collisionDetector.areUnitsColliding(playerUnit, bullet)) {
 
-                resetGame();
+               // resetGame();
                 bullet.sprite.remove();
 
                 for (let j = 0; j < projectiles.length; j += 1) {
@@ -168,24 +168,32 @@ var gameEngine = function() {
     }
 
     function resetGame(){
-        playerUnit.sprite.remove();
-        playerUnit = null;
-        eagleTarget = null;
+        ui.gameStage.clear();
+        ui.gameStage.clearCache();
+        ui.gameStage.destroyChildren();
+        ui.gameStage.destroy();
 
-        for (let j = 0; j < enemies.length; j += 1) {
-            enemies[j].sprite.remove();
-        }
-        enemies = [];
+
 
         for (let j = 0; j < projectiles.length; j += 1) {
             projectiles[j].sprite.remove();
         }
         projectiles = [];
 
-        ui.gameStage.clear();
-        ui.gameStage.clearCache();
-        ui.gameStage.destroyChildren();
-        ui.gameStage.destroy();
+        for (let j = 0; j < enemies.length; j += 1) {
+            enemies[j].sprite.remove();
+        }
+        enemies = [];
+
+        playerUnit.sprite.remove();
+        playerUnit = null;
+        eagleTarget.sprite.remove();
+        eagleTarget = null;
+
+        uiObject.addLayer(playerLayer)
+            .addLayer(enemiesLayer)
+            .addLayer(projectilesLayer)
+            .addLayer(eagleTargetLayer);
 
         $("#home-wrap").css('display', 'block');
     }
