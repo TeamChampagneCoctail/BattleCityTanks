@@ -104,13 +104,14 @@ var gameEngine = function() {
         
         enemies.forEach(function(enemyOnMap, i) {
             enemyOnMap.move(Map.isNextPositionAvailable);
+            enemyOnMap.fire(gameUnitsFactory).render(projectilesLayer);
 
             if(collisionDetector.areUnitsColliding(enemyOnMap, playerUnit)){
                 playerUnit.sprite.remove();
 
                 enemyOnMap.sprite.remove();
                 enemies.slice(i, 1);
-                
+
 
                 //todo game over
                 createExplosion(playerUnit.x, playerUnit.y);
