@@ -2,7 +2,7 @@ var gameEngine = function() {
     'use strict';
 
     const playerStartX = 10 * 40,
-        playerStartY = 0,
+        playerStartY = 16 * 40,
         enemyStartX = 0,
         enemyStartY = 0,
         enemiesOnMapCount = 3,
@@ -68,11 +68,7 @@ var gameEngine = function() {
     }
 
     function executePlayerFiring() {
-        let dir = playerUnit.movingDirection;
-        let bulletX;
-        let bulletY;
-        let bullet = gameUnitsFactory.createBullet(playerUnit.x + playerUnit.width / 2, playerUnit.y - 13, dir)
-            .render(projectilesLayer);
+        let bullet = playerUnit.fire(gameUnitsFactory).render(projectilesLayer);
         projectiles.push(bullet);
     }
 
@@ -94,7 +90,7 @@ var gameEngine = function() {
 
             for (let j = 0; j < enemies.length; j += 1) {
                 let enemyOnMap = enemies[j];
-<<<<<<< HEAD
+
                 console.log(playerUnit);
                 // if (collisionDetector.areUnitsColliding(enemyOnMap, playerUnit)) {
                 //     alert("collided");
@@ -104,9 +100,7 @@ var gameEngine = function() {
                 // }
 
                 console.dir(playerUnit);
-=======
 
->>>>>>> 0671fd715ecff7e93a3eee6fc6663093710e164a
                 if (collisionDetector.areUnitsColliding(enemyOnMap, bullet)) {
                     bullet.sprite.remove();
                     projectiles.slice(i, 1);
@@ -117,11 +111,11 @@ var gameEngine = function() {
 
             bullet.move(bulletDirection);
         }
-        
+
         enemies.forEach(function(enemyOnMap) {
             enemyOnMap.move(Map.isNextPositionAvailable);
 
-            if(collisionDetector.areUnitsColliding(enemyOnMap, playerUnit)){
+            if (collisionDetector.areUnitsColliding(enemyOnMap, playerUnit)) {
                 alert("collided");
                 playerUnit.sprite.remove();
                 enemyOnMap.sprite.remove();
