@@ -39,7 +39,7 @@ var gameEngine = function() {
 
     function initGame(uiObject, inputProvider, unitsFactory) {
         // Canvas stuff
-        uiObject.createGameStage();
+        uiObject = uiObject.createGameStage();
         playerLayer = uiObject.getNewLayer();
         enemiesLayer = uiObject.getNewLayer();
         unitsFactory = unitsFactory;
@@ -89,11 +89,19 @@ var gameEngine = function() {
             }
 
             if (collisionDetector.areUnitsColliding(playerUnit, bullet)) {
-                bullet.sprite.remove();
-                projectiles.slice(i, 1);
-                playerUnit.sprite.remove();
 
+                resetGame();
+                bullet.sprite.remove();
+
+                for (let j = 0; j < projectiles.length; j += 1) {
+                    projectiles[j].sprite.remove();
+                }
+                projectiles = [];
+
+                playerUnit.sprite.remove();
+                createExplosion(playerUnit.x, playerUnit.y);
                 playerUnit = null;
+
 
                 //todo game over
 
@@ -160,7 +168,26 @@ var gameEngine = function() {
     }
 
     function resetGame(){
+        playerUnit.sprite.remove();
+        playerUnit = null;
+        eagleTarget = null;
 
+        for (let j = 0; j < enemies.length; j += 1) {
+            enemies[j].sprite.remove();
+        }
+        enemies = [];
+
+        for (let j = 0; j < projectiles.length; j += 1) {
+            projectiles[j].sprite.remove();
+        }
+        projectiles = [];
+
+        ui.gameStage.clear();
+        ui.gameStage.clearCache();
+        ui.gameStage.destroyChildren();
+        ui.gameStage.destroy();
+
+        $("#home-wrap").css('display', 'block');
     }
 
     function gameOver(){
