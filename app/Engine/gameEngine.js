@@ -94,12 +94,23 @@ var gameEngine = function() {
 
             for (let j = 0; j < enemies.length; j += 1) {
                 let enemyOnMap = enemies[j];
-                if (collisionDetector.areUnitsColliding(enemyOnMap, bullet)) {
+
+                if(collisionDetector.areUnitsColliding(enemyOnMap, playerUnit)){
+                    alert("collided");
+                    playerUnit.sprite.remove();
+                    enemyOnMap.sprite.remove();
+                    enemies.slice(i, 1);
+                }
+
+
+                /*if (collisionDetector.areUnitsColliding(enemyOnMap, bullet)) {
                     bullet.sprite.remove();
                     projectiles.slice(i, 1);
                     enemyOnMap.sprite.remove();
                     enemies.slice(i, 1);
-                }
+                }*/
+
+
             }
 
             bullet.move(bulletDirection);
@@ -112,6 +123,7 @@ var gameEngine = function() {
 
         requestAnimationFrame(gameAnimationLoop);
     }
+
 
     function createEnemies(unitsFactory) {
         let newEnemy = unitsFactory.createEnemy(enemyStartX, enemyStartY).render(enemiesLayer);
