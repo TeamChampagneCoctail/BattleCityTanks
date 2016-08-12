@@ -54,7 +54,7 @@ Defined and implemented the following assets in our project:
 ##  Video & Showcase System links:
 
 -   Brief video of our application, uploaded in [YouTube](https://www.youtube.com/watch?v=_q8U4AFV6tI)
-    -   <a href="http://screencast.com/t/I1gW4S0kAWaB">BattleCityTanks_Video</a>
+    -   Screencast - <a href="http://screencast.com/t/DMPagZeI">BattleCityTanks_Video</a>
 -   Project link in [Showcase System](http://best.telerikacademy.com)
     -   Link with live preview of our game
         -   <a href="http://best.telerikacademy.com/projects/324/Battle-City-Tanks">BattleCityTanks_Preview</a>
