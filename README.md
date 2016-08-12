@@ -31,9 +31,10 @@ The game was developed with JavaScript (SVG & Canvas), CSS and HTML. We use exte
 The player, controlling a tank, must destroy enemy tanks, which enter the playfield screen. The enemy tanks attempt to destroy the player's base, as well as the human tank itself.
 
 Battle City was one of the earlier games to allow two players to play simultaneously. Both players have to defend the base together, and if one player shoots the other, the friendly fire victim would be unable to move for a while (but can still shoot). 
+
 ##  Game Controls
 
-Use "Start Playing" button to start the game. The main player uses "Arrow Keys" for standart movement. If is multiplayer game - 1st player uses "W,A,S,D" and "J" keys. 2nd player uses "Arrow Keys" and "CTRL" key to play. Let's team up with your friend and protect your castle!
+Use "Start Playing" button to start the game. The main player uses "Arrow Keys" for standart movement. Use space button for fire. If is multiplayer game - 1st player uses "W,A,S,D" and "J" keys. 2nd player uses "Arrow Keys" and "CTRL" key to play. Let's team up with your friend and protect your castle!
 
 ##  General Requirements
 
@@ -56,7 +57,7 @@ Defined and implemented the following assets in our project:
     -   <a href="#">BattleCityTanks_Video</a>
 -   Project link in [Showcase System](http://best.telerikacademy.com)
     -   Link with live preview of our game
-        -   <a href="#">BattleCityTanks_Preview</a>
+        -   <a href="http://best.telerikacademy.com/projects/324/Battle-City-Tanks">BattleCityTanks_Preview</a>
 
 ##  Presentation: 
     - Host it on [Prezi](https://prezi.com)
