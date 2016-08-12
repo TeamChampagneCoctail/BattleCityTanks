@@ -78,10 +78,6 @@ var Map = function() {
             }
         },
 
-        drawMapObjects: function() {
-
-        },
-
         /* Initialize */
         init: function(stage) {
             // 1. Initiate map layer & objects
