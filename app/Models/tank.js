@@ -33,12 +33,11 @@ var tank = function(parent) {
     Object.defineProperty(tank, 'fire', {
         value: function(unitsFactory) {
             let direction = this.movingDirection;
-            let bulletX = (direction === 'up' || direction === 'down') ? (playerUnit.x + playerUnit.width / 2 - 7) :
-                direction === 'left' ? playerUnit.x - 7 : playerUnit.x + playerUnit.width + 7;
-            let bulletY = (direction === 'left' || direction === 'right') ? (playerUnit.y + playerUnit.height / 2 - 7) :
-                direction === 'up' ? playerUnit.y - 7 : playerUnit.y + playerUnit.height + 7;
-            let bullet = unitsFactory.createBullet(bulletX, bulletY, dir)
-                .render(projectilesLayer);
+            let bulletX = (direction === 'up' || direction === 'down') ? (this.x + this.width / 2 - 7) :
+                direction === 'left' ? this.x - 7 : this.x + this.width + 7;
+            let bulletY = (direction === 'left' || direction === 'right') ? (this.y + this.height / 2 - 7) :
+                direction === 'up' ? this.y - 7 : this.y + this.height + 7;
+            let bullet = unitsFactory.createBullet(bulletX, bulletY, direction);
 
             return bullet;
         }

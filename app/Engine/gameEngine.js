@@ -1,8 +1,8 @@
 var gameEngine = function() {
     'use strict';
 
-    const playerStartX = 10 * 40,
-        playerStartY = 0 * 40,
+    const playerStartX = 11 * 40,
+        playerStartY = 16 * 40,
         enemyStartX = 0,
         enemyStartY = 0,
         enemiesOnMapCount = 3,
@@ -68,11 +68,7 @@ var gameEngine = function() {
     }
 
     function executePlayerFiring() {
-        let dir = playerUnit.movingDirection;
-        let bulletX;
-        let bulletY;
-        let bullet = gameUnitsFactory.createBullet(playerUnit.x + playerUnit.width / 2, playerUnit.y - 13, dir)
-            .render(projectilesLayer);
+        let bullet = playerUnit.fire(gameUnitsFactory).render(projectilesLayer);
         projectiles.push(bullet);
     }
 
