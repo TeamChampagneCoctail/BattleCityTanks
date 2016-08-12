@@ -122,9 +122,17 @@ var gameUnitsFactory = function() {
         return newBullet;
     }
 
+    function createEagleTarget(){
+        let newEagleTarget = Object.create(target);
+
+
+        return newEagleTarget;
+    }
+
     return {
         createPlayer,
         createEnemy,
-        createBullet
+        createBullet,
+        createEagleTarget
     };
 }();

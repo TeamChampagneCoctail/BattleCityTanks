@@ -30,6 +30,8 @@ var gameEngine = function() {
         enemiesLayer,
         playerLayer,
         projectilesLayer,
+        eagleTarget,
+        eagleTargetLayer,
         playerUnit,
         enemies = [],
         projectiles = [],
@@ -42,15 +44,18 @@ var gameEngine = function() {
         enemiesLayer = uiObject.getNewLayer();
         unitsFactory = unitsFactory;
         projectilesLayer = uiObject.getNewLayer();
+        eagleTargetLayer = uiObject.getNewLayer();
 
         // Units creating
         Map.init(uiObject.gameStage);
         playerUnit = unitsFactory.createPlayer(playerStartX, playerStartY).render(playerLayer);
+        eagleTarget = unitsFactory.createEagleTarget().render(eagleTargetLayer);
         createEnemies(unitsFactory);
         executeEnemyMoving();
         uiObject.addLayer(playerLayer)
             .addLayer(enemiesLayer)
-            .addLayer(projectilesLayer);
+            .addLayer(projectilesLayer)
+            .addLayer(eagleTargetLayer);
     }
 
     function startGame() {
