@@ -33,8 +33,7 @@ var gameEngine = function() {
         playerUnit,
         enemies = [],
         projectiles = [],
-        unitsFactory,
-        bullet;
+        unitsFactory;
 
     function initGame(uiObject, inputProvider, unitsFactory) {
         // Canvas stuff
@@ -55,31 +54,63 @@ var gameEngine = function() {
     }
 
     function startGame() {
-        inputProvider.listenForCommand(executePlayerMoving, executeFiring);
+        inputProvider.listenForCommand(executePlayerMoving, executePlayerFiring);
+        gameAnimationLoop();
     }
 
     function executePlayerMoving(direction) {
         playerUnit.move(direction, Map.isNextPositionAvailable);
     }
 
-    function executeFiring() {
+    function executePlayerFiring() {
         let dir = playerUnit.movingDirection;
-        bullet = gameUnitsFactory.createBullet(playerUnit.x + playerUnit.width / 2, playerUnit.y - 13, dir);
-        bullet.render(projectilesLayer);
-        gameAnimationLoop();
+        let bulletX;
+        let bulletY;
+        let bullet = gameUnitsFactory.createBullet(playerUnit.x + playerUnit.width / 2, playerUnit.y - 13, dir)
+            .render(projectilesLayer);
+        projectiles.push(bullet);
     }
 
     function gameAnimationLoop() {
-        console.log(bullet.movingDirection);
-        bullet.move(directions[bullet.movingDirection]);
+        for (let i = 0; i < projectiles.length; i += 1) {
+            let bullet = projectiles[i];
+            let bulletDirection = directions[bullet.movingDirection];
+            let canFlyAnyMore = Map.isNextPositionAvailable({
+                x: bullet.x + bulletDirection.x,
+                y: bullet.y + bulletDirection.y,
+                width: bullet.width,
+                height: bullet.height
+            });
+            if (!canFlyAnyMore) {
+                bullet.sprite.spriteSheet.remove();
+                projectiles.slice(i, 1);
+                continue;
+            }
+
+            for (let j = 0; j < enemies.length; j += 1) {
+                let enemyOnMap = enemies[j];
+                if (collisionDetector.areUnitsColliding(enemyOnMap, bullet)) {
+                    bullet.sprite.remove();
+                    projectiles.slice(i, 1);
+                    enemyOnMap.sprite.remove();
+                    enemies.slice(i, 1);
+                }
+            }
+
+            bullet.move(bulletDirection);
+        }
+
+
+        enemies.forEach(function(enemyOnMap) {
+            enemyOnMap.move(Map.isNextPositionAvailable);
+        });
+
         requestAnimationFrame(gameAnimationLoop);
     }
 
     function createEnemies(unitsFactory) {
-        while (enemies.length < enemiesOnMapCount) {
-            let newEnemy = unitsFactory.createEnemy(enemyStartX, enemyStartY).render(enemiesLayer);
-            enemies.push(newEnemy);
-        }
+        let newEnemy = unitsFactory.createEnemy(enemyStartX, enemyStartY).render(enemiesLayer);
+        enemies.push(newEnemy);
     }
 
     return {

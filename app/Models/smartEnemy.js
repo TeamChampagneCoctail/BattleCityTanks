@@ -1,20 +1,5 @@
-var enemy = function(parent) {
+var smartEnemy = function(parent) {
     'use strict';
-
-    function getNextDirection(current) {
-        switch (current) {
-            case 'up':
-                return 'right';
-            case 'right':
-                return 'down';
-            case 'down':
-                return 'left';
-            case 'left':
-                return 'up';
-            default:
-                throw new Error('Invalid direction!');
-        }
-    }
 
     let directions = {
         'left': {
@@ -46,28 +31,6 @@ var enemy = function(parent) {
                 width: this.width,
                 height: this.height
             });
-
-            // let dirs = ['left', 'right', 'up', 'down'];
-            // let dir = this.movingDirection;
-            // while (dir === this.movingDirection) {
-            //     let randomDirection = Math.random() * 4 | 0;
-            //     dir = dirs[randomDirection];
-            // }
-
-            // let isValidMove2 = validateMoveCallback({
-            //     x: this.x + (directions[dir].x * this.speed),
-            //     y: this.y + (directions[dir].y * this.speed),
-            //     width: this.width,
-            //     height: this.height
-            // });
-
-            // if (isValidMove2) {
-            //     this.x = nextX;
-            //     this.y = nextY;
-            //     this.sprite.changeAnimation(this.movingDirection);
-            //     this.sprite.changePosition(this.x, this.y);
-            //     return;
-            // }
 
             if (isValidMove) {
                 this.x = nextX;

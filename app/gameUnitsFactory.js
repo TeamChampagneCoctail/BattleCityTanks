@@ -92,7 +92,7 @@ var gameUnitsFactory = function() {
     function createBullet(startX, startY, direction) {
         const width = 13,
             height = 13,
-            speed = 10;
+            speed = 5;
 
         let newBullet = Object.create(bullet);
         newBullet.init({

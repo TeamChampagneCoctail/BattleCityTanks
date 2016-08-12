@@ -35,6 +35,9 @@ var spriteObject = function() {
         changePosition: function(x, y) {
             this.spriteSheet.setX(x);
             this.spriteSheet.setY(y);
+        },
+        remove: function() {
+            this.spriteSheet.remove();
         }
     };
 
