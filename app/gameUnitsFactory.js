@@ -51,7 +51,7 @@ var gameUnitsFactory = function() {
         const width = 39,
             height = 39,
             startDirection = 'right',
-            speed = 5;
+            speed = 3;
 
         let newEnemy = Object.create(enemy);
         newEnemy.init({
@@ -122,7 +122,7 @@ var gameUnitsFactory = function() {
         return newBullet;
     }
 
-    function createEagleTarget(){
+    function createEagleTarget() {
         let newEagleTarget = Object.create(target);
 
 
