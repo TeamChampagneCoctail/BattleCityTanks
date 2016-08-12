@@ -1,8 +1,8 @@
 var gameEngine = function() {
     'use strict';
 
-    const playerStartX = 11 * 40,
-        playerStartY = 16 * 40,
+    const playerStartX = 10 * 40,
+        playerStartY = 0 * 40,
         enemyStartX = 0,
         enemyStartY = 0,
         enemiesOnMapCount = 3,
@@ -106,16 +106,20 @@ var gameEngine = function() {
             bullet.move(bulletDirection);
         }
         
-        enemies.forEach(function(enemyOnMap) {
+        enemies.forEach(function(enemyOnMap, i) {
             enemyOnMap.move(Map.isNextPositionAvailable);
 
             if(collisionDetector.areUnitsColliding(enemyOnMap, playerUnit)){
-                alert("collided");
                 playerUnit.sprite.remove();
+
                 enemyOnMap.sprite.remove();
                 enemies.slice(i, 1);
 
                 //todo game over
+                createExplosion(playerUnit.x, playerUnit.y);
+                playerUnit = null;
+
+                return;
             }
         });
 
@@ -125,6 +129,25 @@ var gameEngine = function() {
     function createEnemies(unitsFactory) {
         let newEnemy = unitsFactory.createEnemy(enemyStartX, enemyStartY).render(enemiesLayer);
         enemies.push(newEnemy);
+    }
+
+    function createExplosion(explosionX, explosionY){
+        let newExplosion = Object.create(explosion);
+
+        newExplosion.render(playerLayer, explosionX, explosionY);
+
+        setTimeout(function(){
+            newExplosion.remove();
+            newExplosion = null;
+        }, 1000)
+    }
+
+    function resetGame(){
+
+    }
+
+    function gameOver(){
+        
     }
 
     function executeEnemyMoving() {

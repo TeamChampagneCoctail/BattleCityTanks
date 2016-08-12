@@ -124,8 +124,7 @@ var gameUnitsFactory = function() {
 
     function createEagleTarget() {
         let newEagleTarget = Object.create(target);
-
-
+        
         return newEagleTarget;
     }
 
