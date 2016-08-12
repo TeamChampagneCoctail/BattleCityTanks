@@ -1,8 +1,8 @@
 var gameEngine = function() {
     'use strict';
 
-    const playerStartX = 11 * 40,
-        playerStartY = 16 * 40,
+    const playerStartX = 10 * 40,
+        playerStartY = 0 * 40,
         enemyStartX = 0,
         enemyStartY = 0,
         enemiesOnMapCount = 3,
@@ -88,6 +88,18 @@ var gameEngine = function() {
                 continue;
             }
 
+            if (collisionDetector.areUnitsColliding(playerUnit, bullet)) {
+                bullet.sprite.remove();
+                projectiles.slice(i, 1);
+                playerUnit.sprite.remove();
+
+                playerUnit = null;
+
+                //todo game over
+
+                return;
+            }
+
             for (let j = 0; j < enemies.length; j += 1) {
                 let enemyOnMap = enemies[j];
 
@@ -104,18 +116,16 @@ var gameEngine = function() {
         
         enemies.forEach(function(enemyOnMap, i) {
             enemyOnMap.move(Map.isNextPositionAvailable);
-            enemyOnMap.fire(gameUnitsFactory).render(projectilesLayer);
 
             if(collisionDetector.areUnitsColliding(enemyOnMap, playerUnit)){
                 playerUnit.sprite.remove();
-
                 enemyOnMap.sprite.remove();
                 enemies.slice(i, 1);
 
-
-                //todo game over
                 createExplosion(playerUnit.x, playerUnit.y);
                 playerUnit = null;
+
+                //todo game over
 
                 return;
             }
@@ -126,7 +136,16 @@ var gameEngine = function() {
 
     function createEnemies(unitsFactory) {
         let newEnemy = unitsFactory.createEnemy(enemyStartX, enemyStartY).render(enemiesLayer);
+        executeEnemyFire(newEnemy);
+
         enemies.push(newEnemy);
+    }
+
+    function executeEnemyFire(enemyOnMap){
+        setInterval(function () {
+            let bullet = enemyOnMap.fire(gameUnitsFactory).render(projectilesLayer);
+            projectiles.push(bullet);
+        }, 500);
     }
 
     function createExplosion(explosionX, explosionY){
@@ -135,7 +154,7 @@ var gameEngine = function() {
         newExplosion.render(playerLayer, explosionX, explosionY);
 
         setTimeout(function(){
-            newExplosion.remove();
+            newExplosion.explosionImage.remove();
             newExplosion = null;
         }, 1000)
     }

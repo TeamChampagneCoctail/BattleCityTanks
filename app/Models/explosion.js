@@ -5,7 +5,7 @@ var explosion = function(parent){
         value: function(layer, explosionX, explosionY) {
             var imageObj = new Image();
             imageObj.addEventListener('load', function(){
-                var explosionImage = new Kinetic.Image({
+                explosion.explosionImage = new Kinetic.Image({
                     x: explosionX,
                     y: explosionY,
                     width: 40,
@@ -14,7 +14,7 @@ var explosion = function(parent){
 
                 });
 
-                layer.add(explosionImage);
+                layer.add(explosion.explosionImage);
                 layer.draw();
             });
 
