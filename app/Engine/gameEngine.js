@@ -94,6 +94,7 @@ var gameEngine = function() {
 
             for (let j = 0; j < enemies.length; j += 1) {
                 let enemyOnMap = enemies[j];
+<<<<<<< HEAD
                 console.log(playerUnit);
                 // if (collisionDetector.areUnitsColliding(enemyOnMap, playerUnit)) {
                 //     alert("collided");
@@ -103,6 +104,9 @@ var gameEngine = function() {
                 // }
 
                 console.dir(playerUnit);
+=======
+
+>>>>>>> 0671fd715ecff7e93a3eee6fc6663093710e164a
                 if (collisionDetector.areUnitsColliding(enemyOnMap, bullet)) {
                     bullet.sprite.remove();
                     projectiles.slice(i, 1);
@@ -113,10 +117,18 @@ var gameEngine = function() {
 
             bullet.move(bulletDirection);
         }
-
-
+        
         enemies.forEach(function(enemyOnMap) {
             enemyOnMap.move(Map.isNextPositionAvailable);
+
+            if(collisionDetector.areUnitsColliding(enemyOnMap, playerUnit)){
+                alert("collided");
+                playerUnit.sprite.remove();
+                enemyOnMap.sprite.remove();
+                enemies.slice(i, 1);
+
+                //todo game over
+            }
         });
 
         requestAnimationFrame(gameAnimationLoop);
