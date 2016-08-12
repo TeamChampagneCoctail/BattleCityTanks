@@ -1,8 +1,8 @@
 var gameEngine = function() {
     'use strict';
 
-    const playerStartX = 11 * 40,
-        playerStartY = 16 * 40,
+    const playerStartX = 10 * 40,
+        playerStartY = 0,
         enemyStartX = 0,
         enemyStartY = 0,
         enemiesOnMapCount = 3,
@@ -94,23 +94,21 @@ var gameEngine = function() {
 
             for (let j = 0; j < enemies.length; j += 1) {
                 let enemyOnMap = enemies[j];
+                console.log(playerUnit);
+                // if (collisionDetector.areUnitsColliding(enemyOnMap, playerUnit)) {
+                //     alert("collided");
+                //     playerUnit.sprite.remove();
+                //     enemyOnMap.sprite.remove();
+                //     enemies.slice(i, 1);
+                // }
 
-                if(collisionDetector.areUnitsColliding(enemyOnMap, playerUnit)){
-                    alert("collided");
-                    playerUnit.sprite.remove();
-                    enemyOnMap.sprite.remove();
-                    enemies.slice(i, 1);
-                }
-
-
-                /*if (collisionDetector.areUnitsColliding(enemyOnMap, bullet)) {
+                console.dir(playerUnit);
+                if (collisionDetector.areUnitsColliding(enemyOnMap, bullet)) {
                     bullet.sprite.remove();
                     projectiles.slice(i, 1);
                     enemyOnMap.sprite.remove();
                     enemies.slice(i, 1);
-                }*/
-
-
+                }
             }
 
             bullet.move(bulletDirection);
