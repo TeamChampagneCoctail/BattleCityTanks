@@ -95,30 +95,28 @@ var gameEngine = function() {
             for (let j = 0; j < enemies.length; j += 1) {
                 let enemyOnMap = enemies[j];
 
-                if(collisionDetector.areUnitsColliding(enemyOnMap, playerUnit)){
-                    alert("collided");
-                    playerUnit.sprite.remove();
-                    enemyOnMap.sprite.remove();
-                    enemies.slice(i, 1);
-                }
-
-
-                /*if (collisionDetector.areUnitsColliding(enemyOnMap, bullet)) {
+                if (collisionDetector.areUnitsColliding(enemyOnMap, bullet)) {
                     bullet.sprite.remove();
                     projectiles.slice(i, 1);
                     enemyOnMap.sprite.remove();
                     enemies.slice(i, 1);
-                }*/
-
-
+                }
             }
 
             bullet.move(bulletDirection);
         }
-
-
+        
         enemies.forEach(function(enemyOnMap) {
             enemyOnMap.move(Map.isNextPositionAvailable);
+
+            if(collisionDetector.areUnitsColliding(enemyOnMap, playerUnit)){
+                alert("collided");
+                playerUnit.sprite.remove();
+                enemyOnMap.sprite.remove();
+                enemies.slice(i, 1);
+
+                //todo game over
+            }
         });
 
         requestAnimationFrame(gameAnimationLoop);
