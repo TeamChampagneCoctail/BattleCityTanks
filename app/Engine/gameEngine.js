@@ -110,6 +110,7 @@ var gameEngine = function() {
 
                 enemyOnMap.sprite.remove();
                 enemies.slice(i, 1);
+                
 
                 //todo game over
                 createExplosion(playerUnit.x, playerUnit.y);
