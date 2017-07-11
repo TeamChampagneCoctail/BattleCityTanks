@@ -5,7 +5,7 @@
 
 <h1 align="center">CSharp OOP - Team "Champagne Coctail"</h1>
 
-###:mortar_board:Team Members
+### :mortar_board:Team Members
 | Name              | Academy Username      	|
 |-------------------|-------------------|
 |                   | :white_check_mark:|
